@@ -12,6 +12,7 @@ module.exports = ({
 
     },
     findById: (req, res) => {
+<<<<<<< HEAD
         repository.findById(req.params, (error, result) => {
             if (error) {
                 res.status(500).send(error)
@@ -21,16 +22,23 @@ module.exports = ({
             }
             res.send(result);
         });
+=======
+
+>>>>>>> master
     },
     update: (req, res) => {
 
     },
     delete: (req, res) => {
+<<<<<<< HEAD
         repository.delete(req.params, (error, result) => {
             if (error) {
                 res.status(500).send(error)
             }
             res.status(204).send(result);
         });
+=======
+
+>>>>>>> master
     }
 }); 
