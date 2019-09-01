@@ -1,25 +1,19 @@
-const connection = require('../mysql-connection');
+const knex = require('../mysql-connection');
 
 module.exports = {
     find: () => {
         return knex.select().from('estado');
     },
     findById: (params) => {
-        return Knex.select().from('estado').where({ id: params.id });
+        return knex.select().from('estado').where({ id: params.id });
     },
-    create: (callback) => {
-        // connection.query('', callback);
+    create: (params) => {
+        return knex.insert(params).into('estado');
     },
-    update: (params, callback) => {
-        // connection.query('update estado set nome = ?, sigla = ? where id = ?',
-        //     [
-        //         params.nome,
-        //         params.sigla,
-        //         params.id
-        //     ],
-        //     callback);
+    update: (params) => {
+        return knex('estado').update(params).where({ id: params.id });
     },
-    delete: (params, callback) => {
-        // connection.query('delete from estado where id = ?', [params.id], callback);
-    },
+    delete: (params) => {
+        return knex('estado').del().where({ id: params.id });
+    }
 }
