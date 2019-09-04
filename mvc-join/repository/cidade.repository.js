@@ -11,7 +11,7 @@ module.exports = {
         connection.query('select * from cidade where id = ?', [params.id], callback);
     },
     create: (callback) => {
-        connection.query('', callback);
+        connection.query('INSERT INTO cidade (nome,estado_id) VALUES (?,?)', [params.nome, params.estado_id], callback);
     },
     update: (params, callback) => {
         connection.query('update cidade set nome = ?, estado_id = ?  where id = ? ',
