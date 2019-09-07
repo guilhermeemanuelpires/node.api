@@ -4,7 +4,7 @@ module.exports = {
     find: (req, res) => {
         repository.find((error, result) => {
             if (error) {
-                res.statust(500).send(error);
+                res.status(500).send(error);
             }
             res.send(result);
         });
@@ -12,7 +12,7 @@ module.exports = {
     findById: (req, res) => {
         repository.findById(req.params, (error, result) => {
             if (error) {
-                res.statust(500).send(error);
+                res.status(500).send(error);
             }
 
             if (!result[0]) {
