@@ -1,30 +1,32 @@
-import * as express from 'express'
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
-import bodyParser = require('body-parser');
 
-//Rotas
-import estadoRoutes from './routes/estado.router';
-import cidadeRoutes from './routes/cidade.router';
-import clienteRoutes from './routes/cliente.router'
+//importando arquivo
+import cidadeRouter from './router/cidade.router'
+import estadoRouter from './router/estado.router';
+import clienteRouter from './router/cliente.router';
 
 class App {
-    public express = express.application;
+    public express: express.Application;
 
     constructor() {
         this.express = express();
-        this.miidleware();
-
+        this.middleware();
+        this.routes();
     }
-    //carrega  os miidleware da aplicação
-    private miidleware(): void {
-        this.express.use(bodyParser.json);
-        this.express.use(cors);
+
+    //Carrega os middleware da aplicação
+    private middleware(): void {
+        this.express.use(bodyParser.json());
+        this.express.use(cors());
     }
 
     private routes(): void {
-        this.express.use('/estados', estadoRoutes);
-        this.express.use('/cidades', cidadeRoutes);
-        this.express.use('/clientes', clienteRoutes);
+        this.express.use('/cidades', cidadeRouter);
+        this.express.use('/estados', estadoRouter);
+        this.express.use('/clientes', clienteRouter);
     }
-
 }
+
+export default new App().express;

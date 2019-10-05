@@ -1,10 +1,11 @@
-import { createConnection, Connection } from 'typeorm';
+import {createConnection} from 'typeorm';
 import * as http from 'http';
-import * as app from './app';
+
+import app from './app';
 
 createConnection().then(connection => {
 
-    const server = http.createServer(app);
+    const server = http.createServer( app );
 
     server.listen(3000, () => {
         console.log('Applicação está rodando na porta 3000');
