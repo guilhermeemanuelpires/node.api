@@ -6,7 +6,7 @@ class CidadeController {
 
     public async find(req: Request, res: Response) {
         try {
-            const cidades = await getRepository(CidadeEntity).find;
+            const cidades = await getRepository(CidadeEntity).find();
             res.send(cidades);
         } catch (error) {
             res.status(500).send(error);

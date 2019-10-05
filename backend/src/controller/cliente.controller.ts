@@ -4,8 +4,9 @@ import { ClienteEntity } from "../entity/cliente.entity";
 
 class ClienteController {
     public async find(req: Request, res: Response) {
+        console.log(getRepository(ClienteEntity).find);
         try {
-            const estados = await getRepository(ClienteEntity).find;
+            const estados = await getRepository(ClienteEntity).find();
             res.send(estados);
         } catch (error) {
             res.status(500).send(error);
