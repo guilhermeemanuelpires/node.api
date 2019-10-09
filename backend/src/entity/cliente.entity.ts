@@ -13,7 +13,7 @@ export class ClienteEntity {
     codigo: string;
 
     @Column()
-    email: number;
+    email: string;
 
     @ManyToOne(type => CidadeEntity, { eager: true, nullable: false })
     @JoinColumn({ name: 'cidade_id' })
