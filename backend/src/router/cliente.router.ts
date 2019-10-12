@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import cliententroller from '../controller/cliente.controller';
+import clienteController from '../controller/cliente.controller';
 
 class ClienteRouter {
     public router: Router;
@@ -10,8 +10,12 @@ class ClienteRouter {
     }
 
     private init() {
-        this.router.get('/', cliententroller.find);
-        this.router.post('/', cliententroller.create);
+        this.router.get('/', clienteController.find);
+        this.router.post('/', clienteController.create);
+
+        this.router.get('/:id([0-9]+)', clienteController.findById);
+        this.router.put('/:id([0-9]+)', clienteController.update);
+        this.router.delete('/:id([0-9]+)', clienteController.delete);
     }
 }
 export default new ClienteRouter().router;
