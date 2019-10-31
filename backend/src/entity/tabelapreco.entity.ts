@@ -13,4 +13,5 @@ export class TabelaprecoEntity {
 
     @Column({ nullable: true, type: 'double' })
     fator: number;
+
 }
