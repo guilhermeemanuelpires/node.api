@@ -8,7 +8,10 @@ import estadoRouter from './router/estado.router';
 import clienteRouter from './router/cliente.router';
 import produtoRouter from './router/produto.router';
 import vendedorRouter from './router/vendedor.router';
+import tabelaPrecoRouter from './router/pedido.router';
 import pedidoRouter from './router/pedido.router';
+
+
 
 class App {
     public express: express.Application;
@@ -31,7 +34,9 @@ class App {
         this.express.use('/clientes', clienteRouter);
         this.express.use('/produtos', produtoRouter);
         this.express.use('/vendedores', vendedorRouter);
+        this.express.use('/tabelapreco', tabelaPrecoRouter);
         this.express.use('/pedidos', pedidoRouter);
+
     }
 }
 

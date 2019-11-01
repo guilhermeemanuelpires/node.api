@@ -1,35 +1,39 @@
-import { Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { PedidoEntity } from "../entity/pedido.entity";
+import { ProdutoEntity } from './../entity/produto.entity';
+import { Request, Response } from 'express';
+import {getRepository} from 'typeorm'
 
-class PedidoController {
+class ProdutoController {
+
     public async find(req: Request, res: Response) {
-        console.log(getRepository(PedidoEntity).find);
+
         try {
-            const produtos = await getRepository(PedidoEntity).find();
+            const produtos = await getRepository(ProdutoEntity).find();
+            
             res.send(produtos);
         } catch (error) {
             res.status(500).send(error);
         }
+
     }
 
     public async create(req: Request, res: Response) {
+        const produto = req.body;
+
         try {
-            const produto = req.body;
-            await getRepository(PedidoEntity).save(produto);
+            await getRepository(ProdutoEntity).save(produto);
             res.send(produto);
-        } catch (error) {
+
+        } catch(error) {
             res.status(500).send(error);
         }
     }
-
 
     public async findById(req: Request, res: Response) {
         const id = req.params.id;
 
         try {
             //Busca registro pelo ID
-            const produto = await getRepository(PedidoEntity).findOne(id);
+            const produto = await getRepository(ProdutoEntity).findOne(id);
 
             //Se não encontrar, devolve erro 404
             if (!produto) {
@@ -50,7 +54,7 @@ class PedidoController {
 
         try {
             //Busca registro pelo ID
-            const produto = await getRepository(PedidoEntity).findOne(id);
+            const produto = await getRepository(ProdutoEntity).findOne(id);
 
             //Se não encontrar, devolve erro 404
             if (!produto) {
@@ -58,7 +62,7 @@ class PedidoController {
                 return;    
             }
 
-            await getRepository(PedidoEntity).update(produto.id, novo);
+            await getRepository(ProdutoEntity).update(produto.id, novo);
             
             //Atualiza ID do novo
             novo.id = produto.id;
@@ -75,7 +79,7 @@ class PedidoController {
 
         try {
             //Busca registro pelo ID
-            const produto = await getRepository(PedidoEntity).findOne(id);
+            const produto = await getRepository(ProdutoEntity).findOne(id);
 
             //Se não encontrar, devolve erro 404
             if (!produto) {
@@ -83,7 +87,7 @@ class PedidoController {
                 return;    
             }
 
-            await getRepository(PedidoEntity).delete(produto);
+            await getRepository(ProdutoEntity).delete(produto);
             
             res.status(204).send();
         } catch (error) {
@@ -91,7 +95,6 @@ class PedidoController {
         }
 
     }
-
 }
 
-export default new PedidoController();
+export default new ProdutoController();

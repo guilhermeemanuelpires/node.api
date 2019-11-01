@@ -36,4 +36,4 @@ export class PedidoEntity {
     @OneToMany(type => ItemPedidoEntity, item => item.pedido, { eager: true })
     itens: ItemPedidoEntity[];
 
-}
+}   
