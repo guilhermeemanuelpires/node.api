@@ -1,12 +1,3 @@
-/* 
-Professor neste trabalho, na implementação do TDD consegue identificar algumas falhas que 
-tinha cometido no desenvolvimento do trabalho, assim com a implementação do TDD, realizei 
-a correção e ajuste do código, visto que na emoção de ir embora eu a acabei apagando sem 
-querer duas linhas importantes do meu arquivo “Main”.
-var app = express('bodyParser');
-var bodyParser = require('body-parser');
-*/
-
 var express = require('express');
 var app = express('bodyParser');
 var bodyParser = require('body-parser');
